@@ -6,7 +6,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 class CustomerFeedbackClassifier(nn.Module):
-    """DistilBERT-based classifier for customer feedback analysis"""
+   
     
     def __init__(self, model_name="distilbert-base-uncased", num_labels=4, dropout=0.1):
         super(CustomerFeedbackClassifier, self).__init__()
@@ -42,7 +42,7 @@ class CustomerFeedbackClassifier(nn.Module):
         }
     
     def save_model(self, path):
-        """Save model weights and configuration"""
+        
         torch.save({
             'model_state_dict': self.state_dict(),
             'config': self.config,
@@ -52,7 +52,7 @@ class CustomerFeedbackClassifier(nn.Module):
     
     @classmethod
     def load_model(cls, path, model_name="distilbert-base-uncased"):
-        """Load model from saved weights"""
+       
         checkpoint = torch.load(path, map_location=torch.device('cpu'))
         model = cls(model_name=model_name, num_labels=checkpoint['num_labels'])
         model.load_state_dict(checkpoint['model_state_dict'])
