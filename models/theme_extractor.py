@@ -36,7 +36,7 @@ class ThemeExtractor:
         return results
     
     def get_theme_stats(self, texts):
-        """Get statistics about theme frequency"""
+        
         all_themes = []
         for text in texts:
             all_themes.extend(self.extract_themes(text))
