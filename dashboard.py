@@ -10,7 +10,6 @@ from inference import FeedbackAnalyzer
 from models.theme_extractor import ThemeExtractor
 import yaml
 
-# Page configuration
 st.set_page_config(
     page_title="Customer Feedback Analyzer",
     page_icon="📊",
@@ -18,11 +17,9 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Load configuration
 with open("config.yaml", 'r') as f:
     config = yaml.safe_load(f)
 
-# Initialize analyzer (cached for performance)
 @st.cache_resource
 def load_analyzer():
     return FeedbackAnalyzer()
@@ -42,7 +39,7 @@ def main():
     theme extraction, and actionable insights.
     """)
     
-    # Sidebar
+
     st.sidebar.header("Configuration")
     confidence_threshold = st.sidebar.slider(
         "Confidence Threshold",
@@ -83,7 +80,6 @@ def render_single_analysis():
         with st.spinner("Analyzing feedback..."):
             result = analyzer.analyze_single(feedback_text)
             
-            # Display results
             col1, col2, col3 = st.columns(3)
             
             with col1:
@@ -139,8 +135,7 @@ def render_batch_analysis():
                     
                     st.success("Analysis completed!")
                     st.dataframe(results_df)
-                    
-                    # Download results
+                
                     csv = results_df.to_csv(index=False)
                     st.download_button(
                         "Download Results",
