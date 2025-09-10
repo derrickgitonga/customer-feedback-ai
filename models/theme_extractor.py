@@ -6,7 +6,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 class ThemeExtractor:
-    """Extract key themes from customer feedback using keyword matching"""
+    
     
     def __init__(self, config_path="config.yaml"):
         with open(config_path, 'r') as f:
@@ -16,7 +16,7 @@ class ThemeExtractor:
         logger.info("Theme extractor initialized with %d theme categories", len(self.theme_keywords))
     
     def extract_themes(self, text):
-        """Extract themes from text based on keyword matching"""
+       
         text = text.lower()
         themes = []
         
@@ -29,7 +29,7 @@ class ThemeExtractor:
         return list(set(themes))
     
     def batch_extract_themes(self, texts):
-        """Extract themes from multiple texts"""
+        
         results = []
         for text in texts:
             results.append(self.extract_themes(text))
